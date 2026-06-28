@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+/* ── Background layers ─────────────────────────── */
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* ── Blinking dot ──────────────────────────────── */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.1; }
+}
+
+/* ── Scan line ─────────────────────────────────── */
+
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+  z-index: 999;
+  animation: scanLine 10s linear infinite;
+}
+
+@keyframes scanLine {
+  from { transform: translateY(0vh); }
+  to   { transform: translateY(100vh); }
+}
+
+/* ── Nav scroll state ──────────────────────────── */
+
+.nav-scrolled {
+  backdrop-filter: blur(16px) !important;
+  background: rgba(0,0,0,0.88) !important;
+  border-bottom-color: rgba(255,255,255,0.12) !important;
+}
+
+/* ── Buttons ───────────────────────────────────── */
+
+.btn-primary {
+  background: #fff;
+  color: #000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s cubic-bezier(0.25,0,0,1);
+  letter-spacing: 0.05em;
+}
+.btn-primary:hover:not(:disabled) { background: rgba(255,255,255,0.88); }
+.btn-primary:disabled {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.2);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: border-color 0.2s cubic-bezier(0.25,0,0,1), color 0.2s;
+  letter-spacing: 0.05em;
+}
+.btn-ghost:hover:not(:disabled) {
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+}
+.btn-ghost:disabled {
+  color: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.06);
+  cursor: not-allowed;
+}
+
+/* ── NFT Cards ─────────────────────────────────── */
+
+.nft-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* ── Section divider ───────────────────────────── */
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  width: 100%;
+}
+
+/* ── Typography ────────────────────────────────── */
+
+.hero-title {
+  font-size: clamp(72px, 10vw, 100px);
+  font-weight: 700;
+  letter-spacing: -3px;
+  line-height: 0.9;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.price-label {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.5px;
+}
