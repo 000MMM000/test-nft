@@ -85,9 +85,9 @@ export default function MarketBg() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}
-    />
+    <>
+      <canvas ref={canvasRef} style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }} />
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", background: "rgba(0,0,0,0.55)" }} />
+    </>
   );
 }
