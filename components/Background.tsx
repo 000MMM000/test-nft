@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import ParticleField from "./ParticleField";
 import MarketBg from "./MarketBg";
 import DocsBg from "./DocsBg";
+import PortfolioBg from "./PortfolioBg";
 
 export default function Background() {
   const pathname = usePathname();
@@ -16,6 +17,7 @@ export default function Background() {
       {pathname === "/" && <ParticleField />}
       {pathname === "/market" && <MarketBg />}
       {pathname === "/docs" && <DocsBg />}
+      {pathname === "/portfolio" && <PortfolioBg />}
     </>
   );
 }
